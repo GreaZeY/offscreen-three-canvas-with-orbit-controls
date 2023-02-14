@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Environment, RoundedBox, TransformControls } from "@react-three/drei";
 
-function Cube(props) {
+function SmoothEdgedBox(props) {
   const mesh = useRef();
 
   const [hovered, setHover] = useState(false);
@@ -14,7 +14,6 @@ function Cube(props) {
   });
 
   return (
-    
     <RoundedBox
       {...props}
       ref={mesh}
@@ -25,7 +24,7 @@ function Cube(props) {
     >
       <meshStandardMaterial
         metalness={1}
-        roughness={.2}
+        roughness={0.2}
         envMapIntensity={1}
         color={hovered ? "teal" : "hotpink"}
       />
@@ -33,17 +32,17 @@ function Cube(props) {
   );
 }
 
-const Comp = ({ position }) => {
+const Cube = ({ position }) => {
   return (
     <>
       <ambientLight />
       <pointLight position={[0, 0, 10]} />
       <Environment files={"home.hdr"} path={"/"} />
       {/* <TransformControls domElement={self.domElement} > */}
-        <Cube position={position} />
+      <SmoothEdgedBox position={position} />
       {/* </TransformControls> */}
     </>
   );
 };
 
-export default Comp;
+export default Cube;

@@ -1,13 +1,13 @@
 import { createRoot } from "react-dom/client";
 import { Suspense } from "react";
-
+import OffscreenCanvas from "./components/OffscreenCanvas";
 import "./styles.css";
-import App from "./components";
+
 
 const Root = () => {
   return (
     <Suspense fallback={null}>
-      <App />
+      <OffscreenCanvas/>
     </Suspense>
   );
 };

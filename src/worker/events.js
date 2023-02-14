@@ -1,6 +1,6 @@
 import mitt from 'mitt'
 import { createEvents } from '@react-three/fiber'
-import { DOM_EVENTS } from '../domEvents'
+import { DOM_EVENTS } from '../components/domEvents'
 
 export const emitter = mitt()
 
@@ -12,7 +12,6 @@ export function createPointerEvents(store) {
     priority: 1,
     enabled: true,
     compute(event, state) {
-
       // https://github.com/pmndrs/react-three-fiber/pull/782
       // Events trigger outside of canvas when moved, use offsetX/Y by default and allow overrides
       state.pointer.set((event.offsetX / state.size.width) * 2 - 1, -(event.offsetY / state.size.height) * 2 + 1)
