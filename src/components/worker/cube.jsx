@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Environment, RoundedBox } from "@react-three/drei";
+import { Environment, RoundedBox, TransformControls } from "@react-three/drei";
 
 function Cube(props) {
   const mesh = useRef();
@@ -38,11 +38,10 @@ const Comp = ({ position }) => {
     <>
       <ambientLight />
       <pointLight position={[0, 0, 10]} />
-      <Environment
-        files={"home.hdr"}
-        path={"/"}
-      />
-      <Cube position={position} />
+      <Environment files={"home.hdr"} path={"/"} />
+      {/* <TransformControls domElement={self.domElement} > */}
+        <Cube position={position} />
+      {/* </TransformControls> */}
     </>
   );
 };

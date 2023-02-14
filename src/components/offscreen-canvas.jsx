@@ -29,29 +29,25 @@ const OffscreenCanvas = ({ onClick, worker, ...props }) => {
         eventName,
         (event) => {
           if (event.type === "pointerdown")
-            console.log(
-              "real event",
-              event,
               event.target.releasePointerCapture(event.pointerId)
-            );
-          worker.postMessage({
-            type: "dom_events",
-            payload: {
-              eventName,
-              clientX: event.clientX,
-              clientY: event.clientY,
-              offsetX: event.offsetX,
-              offsetY: event.offsetY,
-              x: event.x,
-              y: event.y,
-              type: eventName,
-              pointerType: event.pointerType,
-              button: event.button,
-              pointerId: event.pointerId,
-              deltaY: event.deltaY,
-              deltaX: event.deltaX,
-            },
-          });
+            worker.postMessage({
+              type: "dom_events",
+              payload: {
+                eventName,
+                clientX: event.clientX,
+                clientY: event.clientY,
+                offsetX: event.offsetX,
+                offsetY: event.offsetY,
+                x: event.x,
+                y: event.y,
+                type: eventName,
+                pointerType: event.pointerType,
+                button: event.button,
+                pointerId: event.pointerId,
+                deltaY: event.deltaY,
+                deltaX: event.deltaX,
+              },
+            });
         },
         { passive }
       );
@@ -82,7 +78,13 @@ const OffscreenCanvas = ({ onClick, worker, ...props }) => {
     });
   }, [props]);
 
-  return <canvas ref={canvasRef} onClick={onClick} />;
+  return (
+    <canvas
+      // style={{ width: "40vw", aspectRatio: 16 / 9 }}
+      ref={canvasRef}
+      onClick={onClick}
+    />
+  );
 };
 
 export default OffscreenCanvas;

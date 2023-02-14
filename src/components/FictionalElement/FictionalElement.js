@@ -46,6 +46,11 @@ class FictionalElement extends EventDispatcher {
     //no operate
   }
 
+  setSize(width, height) {
+    this.height = height;
+    this.width = width;
+  }
+
   /**
    * @description: override dispatchEvent
    * @param {{type:string,[key:string]:any}} event

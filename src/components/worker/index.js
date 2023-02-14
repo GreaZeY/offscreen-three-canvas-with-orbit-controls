@@ -28,7 +28,11 @@ const CompWrapper = (initialProps) => {
 
   return (
     <>
-      <OrbitControls domElement={domElement} makeDefault />
+      <OrbitControls
+        onChange={(e) => console.log(domElement)}
+        domElement={domElement}
+        makeDefault
+      />
       <Cube {...props} />
     </>
   );
@@ -38,7 +42,7 @@ const handleInit = (payload) => {
   const { props, drawingSurface: canvas, width, height, pixelRatio } = payload;
 
   root = createRoot(canvas);
-
+  domElement.setSize(width, height);
   root.configure({
     events: createPointerEvents,
     size: {
@@ -54,6 +58,7 @@ const handleInit = (payload) => {
 
 const handleResize = ({ width, height }) => {
   if (!root) return;
+  domElement.setSize(width, height);
   root.configure({
     size: {
       width,
@@ -98,6 +103,4 @@ self.document = {
   // domElement:new FictionalElement()
 };
 
-domElement.addEventListener("pointerup", (e) => {
-  console.log(e);
-});
+self.domElement = domElement;
