@@ -1,5 +1,5 @@
 
-# A implementation of orbit controls in offscreen three canvas
+# A implementation of orbit controls inside offscreen three canvas with @react-three/fiber
 
 ## Problem
 OrbitControls inside a offscreen canvas is not possible through simple means because inside worker thread there is no access to DOM API. 
