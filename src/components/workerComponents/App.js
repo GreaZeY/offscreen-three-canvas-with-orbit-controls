@@ -22,6 +22,7 @@ const App = (initialProps) => {
     <>
       <OrbitControls
         domElement={fictionalDomElement}
+        onChange={(e) => console.log(fictionalDomElement)}
         makeDefault
       />
       <Cube {...props} />

@@ -15,7 +15,7 @@ export const createScene = (payload) => {
   const { props, drawingSurface: canvas, width, height, pixelRatio } = payload;
 
   root = createRoot(canvas);
-  //   fictionalDomElement.setSize(width, height);
+  fictionalDomElement.setSize(width, height);
   root.configure({
     events: createPointerEvents,
     size: {
